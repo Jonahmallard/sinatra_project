@@ -1,1 +1,1 @@
-
+Open a New Terminal and run "bundle install" to begin.
