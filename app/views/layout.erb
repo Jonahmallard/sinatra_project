@@ -1,25 +1,25 @@
 <!DOCTYPE html>
 <head>
-<title>SinatraProject</title>
-<link rel="stylesheet" href="/stylesheets/main.css" />
-  </head>
-    <body>
+  <title>SinatraProject</title>
+  <link rel="stylesheet" href="/stylesheets/main.css" />
+</head>
+<body>
   <nav>
   <%if current_user%>
     <form action="/logout" method='post'>
       <input type="hidden" name="_method" value="DELETE">
       <input type="submit" value="logout">
     </form>
-    <a href="/books/new">New Book</a>
-    <a href="/books">My Books</a>
+      <a href="/books/new">New Book</a>
+      <a href="/books">My Books</a>
   <%else%>
-  <a href="/login">Login</a>
-    <br>
-  <a href="/signup">Signup</a>
+    <a href="/login">Login</a>
+    <a href="/signup">Signup</a>
   <%end%>
   </nav>
-    <div class="wrapper">
+  <div class="wrapper">
   <%= yield %>
-    </div>
-  </body>
+  </div>
+</body>
+<footer>Sinatra Project</footer>
 </html>
