@@ -1,17 +1,15 @@
 class BooksController < ApplicationController
 #index action
 get '/books' do
-  if current_user
+    redirect_if_not_logged_in
     @books = current_user.books
     erb :'books/index'
-  else
-    redirect 'login'
-  end
 end
 
 #new action(view for form that will create)
 get '/books/new' do
-  erb :'books/new'
+    redirect_if_not_logged_in
+    erb :'books/new'
 end
 
 #create action
@@ -23,13 +21,13 @@ post '/books' do
 end
 
 #show action
-get '/books/:id' do
-    set_book
-  if @book
-    erb :'books/show'
-  else
-    redirect '/books' 
-  end
+get '/books/:id' do 
+    redirect_if_not_logged_in
+    if set_book
+      erb :'books/show'
+    else
+      redirect '/books'
+    end
 end
 
 #edit action(view for form that will update)

@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   end
 
   post '/signup' do 
-    user = User.new(params)
+    user = User.create(params)
     session[:user_id] = user.id
     redirect '/books'
   end
@@ -15,7 +15,7 @@ class UsersController < ApplicationController
 
   post '/login' do 
     user = User.find_by(user_name: params[:user_name])
-    if user && user.authenticate(params[:password])
+    if user&.authenticate(params[:password])
       session[:user_id] = user.id
       redirect '/books'
     else
