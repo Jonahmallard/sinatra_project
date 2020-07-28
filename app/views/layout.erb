@@ -8,6 +8,10 @@
   <body>
   <nav>
     <a href="/books/new">New Book</a>
+    <form action="/loogut" method='post'>
+      <input type="hidden" name="_method" value="DELETE">
+      <input type="submit" value="logout">
+    </form>
   </nav>
     <div class="wrapper">
       <%= yield %>

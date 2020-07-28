@@ -1,8 +1,12 @@
 class BooksController < ApplicationController
 #index action
 get '/books' do
-  @books = current_user.books
-  erb :'books/index'
+  if current_user
+    @books = current_user.books
+    erb :'books/index'
+  else
+    redirect 'login'
+  end
 end
 
 #new action(view for form that will create)
