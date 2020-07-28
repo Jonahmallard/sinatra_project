@@ -1,0 +1,6 @@
+<form action="/books/<%=@book.id%>" method='post'>
+  <input type="hidden" name="_method" value="PATCH">
+  <label for="book">Edit Book:</label>
+  <input type="text" name="book" id="book" value="<%=@book.book%>">
+  <input type="submit" value="Update!">
+</form>

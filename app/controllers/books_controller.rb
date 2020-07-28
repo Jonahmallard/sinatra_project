@@ -9,6 +9,7 @@ end
 get '/books/new' do
   erb :'books/new'
 end
+
 #create action
 post '/books' do
   book = current_user.books.build(params)
@@ -16,18 +17,41 @@ post '/books' do
   book.save
   redirect "books/#{book.id}"
 end
+
 #show action
 get '/books/:id' do
-  @book = current_user.books.find_by_id(params[:id])
+    set_book
   if @book
     erb :'books/show'
   else
     redirect '/books' 
   end
 end
+
 #edit action(view for form that will update)
+get '/books/:id/edit' do
+  set_book
+  erb :'books/edit'
+end
 
 #update action
+patch '/books/:id' do
+  params.delete(:_method)
+  set_book
+  @book.update(params)
+  redirect '/books'
+end
 
 #delete action
+delete '/books/:id' do
+  set_book
+  @book.destroy
+  redirect "/books"
+end
+
+  private
+
+  def set_book
+    @book = current_user.books.find_by_id(params[:id])
+  end
 end
