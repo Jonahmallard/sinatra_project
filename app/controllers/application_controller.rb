@@ -11,8 +11,10 @@ class ApplicationController < Sinatra::Base
     erb :welcome
   end
 
-  get "/books" do
-    erb :layout
+helpers do
+  def current_user
+    @user = User.first
   end
+end
 
 end

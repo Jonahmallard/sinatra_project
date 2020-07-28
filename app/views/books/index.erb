@@ -1,0 +1,6 @@
+<h2>My Books</h2>
+<ol>
+  <%@books.each do |book|%>
+    <p><%=book.book%> completed: <%=book.complete%></p>
+  <%end%>
+</ol>
