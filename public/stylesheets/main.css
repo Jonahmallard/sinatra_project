@@ -3,5 +3,9 @@ h2 {
 }
 
 body {
-  color: lightblue;
+  color: purple;
+}
+
+html {
+  background-color: rgb(0, 0, 0);
 }

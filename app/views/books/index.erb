@@ -1,15 +1,15 @@
-<h2>My Books</h2>
+<h1>My Books</h1>
 <ol>
   <%@books.each do |book|%>
     <p><%=book.book%> completed: <%=book.complete%></p>
     <form action="books/<%=book.id%>" method='post'>
       <input type="hidden" name="_method" value="DELETE">
-      <input type="submit" value="X" style="color:red">
+      <input type="submit" value="Delete" style="color:red">
     </form>
     <form action="books/<%=book.id%>" method='post'>
       <input type="hidden" name="_method" value="PATCH">
       <input type="hidden" name="complete" value="true">
-      <input type="submit" value="update" style="color:green">
+      <input type="submit" value="Finished Reading!" style="color:darkgreen">
     </form>
     <a href="/books/<%=book.id%>/edit">edit book</a>
   <%end%>
