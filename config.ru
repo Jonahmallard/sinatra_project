@@ -5,6 +5,7 @@ if ActiveRecord::Migrator.needs_migration?
 end
 
 ActiveRecord::Base.logger = Logger.new(STDOUT)
+
 use UsersController
 use BooksController
 run ApplicationController
