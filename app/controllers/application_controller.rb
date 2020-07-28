@@ -11,4 +11,8 @@ class ApplicationController < Sinatra::Base
     erb :welcome
   end
 
+  get "/books" do
+    erb :layout
+  end
+
 end
