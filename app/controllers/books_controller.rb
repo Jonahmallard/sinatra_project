@@ -14,10 +14,14 @@ end
 
 #create action
 post '/books' do
-  book = current_user.books.build(params)
-  book.complete = false
-  book.save
-  redirect "books/#{book.id}"
+  if params[:book] != ""
+    book = current_user.books.build(params)  
+    book.complete = false
+    book.save
+    redirect "books/#{book.id}"
+  else
+    erb :'books/new'
+  end
 end
 
 #show action
@@ -32,16 +36,24 @@ end
 
 #edit action(view for form that will update)
 get '/books/:id/edit' do
-  set_book
-  erb :'books/edit'
+  redirect_if_not_logged_in
+  if set_book
+    erb :'books/edit'
+  else
+    redirect '/books'
+  end
 end
 
 #update action
 patch '/books/:id' do
-  params.delete(:_method)
   set_book
-  @book.update(params)
-  redirect '/books'
+  if params[:book] != ""
+    params.delete(:_method)
+    @book.update(params)
+    redirect '/books'
+  else
+    erb :'books/edit'
+  end 
 end
 
 #delete action
