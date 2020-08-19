@@ -4,9 +4,14 @@ class UsersController < ApplicationController
   end
 
   post '/signup' do 
-    user = User.create(params)
-    session[:user_id] = user.id
-    redirect '/books'
+   if !User.find_by(user_name: params[:user_name]) && params[:password] != ""
+      user = User.create(params)
+      session[:user_id] = user.id
+      redirect '/books'
+   else
+      @error = 'Invalid Username or Password'
+      erb :'users/signup'
+   end
   end
 
   get '/login' do
