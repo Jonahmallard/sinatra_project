@@ -8,3 +8,7 @@ account with a Username and secure Password.
 
 Once you've logged in you will be redirected to a list called "My Books"
 from this page you can add, update, and delete any number of books. 
+
+## Screenshots
+
+![Book Collector](screenshots/book-collector.png)
